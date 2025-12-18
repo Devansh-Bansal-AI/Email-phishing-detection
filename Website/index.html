@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishShield | AI-Powered Phishing Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🛡️ PhishShield</a>
+            <div class="nav-links">
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#team" class="nav-link">Team</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="nav-controls">
+                    <a href="https://github.com/" target="_blank" class="nav-cta">View on GitHub</a>
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" />
+                        <div class="slider">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="container">
+            <div class="hero-content">
+                <h1>Never Fall for a Phish Again.</h1>
+                <p class="hero-tagline">PhishShield uses advanced AI to automatically identify and warn you about malicious emails in real-time, protecting your personal information before you click.</p>
+                <a href="#demo" class="btn btn-primary">Watch Demo</a>
+            </div>
+            <div class="hero-image">
+                <img src="img/hero-visual.png" alt="PhishShield extension in action">
+            </div>
+        </section>
+
+        <section id="how-it-works" class="container hidden">
+            <h2>How It Works: The Magic Behind the Shield</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search-location"></i>
+                    <h3>Link Analysis</h3>
+                    <p>Scans all embedded URLs for malicious redirects and reputation against known threat databases.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Sender Verification</h3>
+                    <p>Checks sender authenticity through SPF, DKIM, and DMARC records to prevent email spoofing.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI Content Analysis</h3>
+                    <p>Uses a machine learning model to detect unusual language, manipulative phrasing, and phishing tactics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="container hidden">
+            <h2>See PhishShield in Action</h2>
+            <div class="screenshots-grid">
+                <img src="img/screenshot1.png" alt="Email before detection">
+                <img src="img/screenshot2.png" alt="PhishShield analyzing the email">
+                <img src="img/screenshot3.png" alt="Warning on a phishing email">
+            </div>
+            <h3>Video Demonstration</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/E-h_69PRE3Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="team" class="container hidden">
+            <h2>Meet the Architects of Your Security</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://www.gravatar.com/avatar/?d=mp&s=200" alt="Divya Mishra">
+                    <h3>Divya Mishra</h3>
+                    <p>Team Lead & Project Architect</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://www.gravatar.com/avatar/?d=mp&s=200" alt="Abhinav Atul">
+                    <h3>Abhinav Atul</h3>
+                    <p>Lead ML & Backend Engineer</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://www.gravatar.com/avatar/?d=mp&s=200" alt="Krish Goyal">
+                    <h3>Krish Goyal</h3>
+                    <p>Lead Frontend & UI/UX Designer</p>
+                </div>
+                 <div class="team-member">
+                    <img src="https://www.gravatar.com/avatar/?d=mp&s=200" alt="Devansh Bansal">
+                    <h3>Devansh Bansal</h3>
+                    <p>Extension UI/UX Specialist</p>
+                </div>
+                 <div class="team-member">
+                    <img src="https://www.gravatar.com/avatar/?d=mp&s=200" alt="Utkarsh Shukla">
+                    <h3>Utkarsh Shukla</h3>
+                    <p>Presentation & Documentation Lead</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="container hidden">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Have a question or want to collaborate? We’d love to hear from you.</p>
+            <div class="contact-wrapper">
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> contact@phishshield.dev</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Planet Earth</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Ready to Secure Your Inbox?</h2>
+            <a href="https://github.com/" target="_blank" class="btn btn-primary">Get PhishShield on GitHub</a>
+            <p class="copyright">© 2025 PhishShield. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

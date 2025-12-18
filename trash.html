@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishShield Extension</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            width: 350px;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 32px;
+            margin-right: 10px;
+            color: #4ade80;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, #4ade80, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #d1d5db;
+            margin-bottom: 20px;
+        }
+        
+        .status-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-text {
+            font-size: 14px;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ef4444;
+            margin-right: 8px;
+        }
+        
+        .status-dot.active {
+            background-color: #10b981;
+        }
+        
+        .main-content {
+            padding: 0 20px 20px;
+            flex-grow: 1;
+        }
+        
+        .scan-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #3b82f6, #6366f1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .scan-btn:hover {
+            background: linear-gradient(to right, #6366f1, #3b82f6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        .features {
+            margin-bottom: 25px;
+        }
+        
+        .features h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #e5e7eb;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .feature-icon {
+            color: #4ade80;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4ade80;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #d1d5db;
+        }
+        
+        .website-link {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #3b82f6;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .website-link:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .footer {
+            padding: 15px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .tab.active {
+            background: rgba(59, 130, 246, 0.3);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .history-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .history-date {
+            color: #9ca3af;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <h1>PhishShield</h1>
+            </div>
+            <p class="subtitle">AI-Powered Phishing Detection</p>
+            
+            <div class="status-container">
+                <span class="status-text">Protection Status</span>
+                <div class="status-indicator">
+                    <div class="status-dot active"></div>
+                    <span>Active</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <button class="scan-btn">Scan Current Email</button>
+            
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('dashboard')">Dashboard</div>
+                <div class="tab" onclick="switchTab('history')">History</div>
+                <div class="tab" onclick="switchTab('settings')">Settings</div>
+            </div>
+            
+            <div id="dashboard" class="tab-content active">
+                <div class="features">
+                    <h3>How PhishShield Protects You</h3>
+                    <ul class="feature-list">
+                        <li><span class="feature-icon">✓</span> Link Analysis</li>
+                        <li><span class="feature-icon">✓</span> Sender Verification</li>
+                        <li><span class="feature-icon">✓</span> AI Content Analysis</li>
+                        <li><span class="feature-icon">✓</span> Real-time Protection</li>
+                    </ul>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value">127</div>
+                        <div class="stat-label">Emails Scanned</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Threats Blocked</div>
+                    </div>
+                </div>
+                
+                <a href="https://your-website-url.com/index.html" target="_blank" class="website-link">
+                    Learn More on Our Website
+                </a>
+            </div>
+            
+            <div id="history" class="tab-content">
+                <h3>Recent Scans</h3>
+                <div class="history-item">
+                    <div>Phishing attempt detected</div>
+                    <div class="history-date">Today, 14:32</div>
+                </div>
+                <div class="history-item">
+                    <div>Legitimate email</div>
+                    <div class="history-date">Today, 13:15</div>
+                </div>
+                <div class="history-item">
+                    <div>Phishing attempt detected</div>
+                    <div class="history-date">Yesterday, 18:47</div>
+                </div>
+                
+                <a href="https://your-website-url.com/index.html" target="_blank" class="website-link">
+                    View Detailed Reports on Website
+                </a>
+            </div>
+            
+            <div id="settings" class="tab-content">
+                <h3>Extension Settings</h3>
+                <div class="feature-list">
+                    <li><span class="feature-icon">⚙️</span> Enable real-time scanning</li>
+                    <li><span class="feature-icon">⚙️</span> Show desktop notifications</li>
+                    <li><span class="feature-icon">⚙️</span> Automatic updates</li>
+                </div>
+                
+                <a href="https://your-website-url.com/index.html" target="_blank" class="website-link">
+                    Customize Settings on Website
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 PhishShield. All rights reserved.</p>
+            <p>Version 2.1.0</p>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Simulate scanning functionality
+        document.querySelector('.scan-btn').addEventListener('click', function() {
+            this.textContent = 'Scanning...';
+            this.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                this.textContent = 'Scan Complete';
+                this.style.background = 'linear-gradient(to right, #10b981, #059669)';
+                
+                setTimeout(() => {
+                    this.textContent = 'Scan Current Email';
+                    this.style.opacity = '1';
+                    this.style.background = 'linear-gradient(to right, #3b82f6, #6366f1)';
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
